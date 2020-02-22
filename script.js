@@ -119,7 +119,97 @@ function generate(data) {
 
     data3.append($(`<button id='back' class='btn btn-info'>Go back</button>`))
     let content = $(`<div id='data'> </div>`).append(data3);
-    $('body').empty().append(content);
+    $('body').empty().append($(`
+    <nav class="navbar navbar-expand-md navbar-dark">
+    <!-- brand icon -->
+    <img id="logo" src="logo.jpg" style="width: 40px;">
+    <h3><a class="navbar-brand" href="/">Frigi-Track</a></h3>
+
+    <!-- Collapse toggle button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible Navigation Bar -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <!-- Navigation bar contents -->
+        <ul class="navbar-nav">
+            <!-- Whitespace & Separator -->
+            <span class="navbar-text">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+
+            <!-- Navigation bar items -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">Track</a> <!-- TODO -->
+            </li>
+
+
+            <!-- Whitespace & Separator -->
+            <span class="navbar-text">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+
+            <!-- Navigation bar items -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">Foodlist</a> <!-- TODO -->
+            </li>
+
+
+            <!-- Whitespace & Separator -->
+            <span class="navbar-text">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+
+            <!-- Navigation bar items -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">Nutrition Menu</a> <!-- TODO -->
+            </li>
+
+
+            <!-- Whitespace & Separator -->
+            <span class="navbar-text">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+
+            <!-- Navigation bar dropdown menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    My Fridge
+                </a>
+                <!-- Dropdown menu items -->
+                <div class="dropdown-menu">
+                    <a class="dropdown-item">Fridge 1</a> <!-- TODO -->
+                    <!-- My food list -->
+                    <a class="dropdown-item">Fridge 2</a> <!-- TODO -->
+                    <!-- Settings -->
+                    <a class="dropdown-item">Fridge 3</a> <!-- TODO -->
+                    <!-- Log out -->
+                </div>
+            </li>
+
+            <!-- Not Login content -->
+            <!-- Whitespace & Separator -->
+            <span class="navbar-text">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+
+            <div class="search-container">
+                <form>
+                    <input type="text" placeholder="Search your food" name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+
+        </ul>
+    </div>
+</nav>`));
+    $('body').append(content);
+    $('body').append($(`<footer>
+    <div class="container-fluid">
+        <p><span style='color:black'>Frigi-Track</span></p>
+    </div>
+</footer>`));
 }
 
 $('body').on('click', '#todata', (e) => {
@@ -257,7 +347,7 @@ function main() {
     
     <footer>
     <div class="container-fluid">
-        <p>Frigi-Track</p>
+    <p><span style='color:black'>Frigi</span>--Track</p>
     </div>
 </footer>`))
 }

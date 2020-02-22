@@ -41,7 +41,8 @@
 
 
 .navbar .search-container {
-  float: right;
+    position:absolute;
+   right:20px;
 }
 
 .navbar input[type=text] {
@@ -116,7 +117,8 @@ footer{
     position: fixed; 
      bottom: 0; 
     width: 100%;
-    background-color: #99badd;
+    /* background-color: #99badd; */
+    /* border-top: 2px solid #99badd; */
     color: white;
     z-index: 10;
     display: flex;

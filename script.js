@@ -340,6 +340,7 @@ document.getElementById("scanbtn").addEventListener("click", function (e) {
         Quagga.stop();
         _scannerIsRunning=false;
     } else {
+        $('#main').append('<iframe src="https://www.barcodelookup.com/"></iframe>');
         startScanner();
     }
 }, false);

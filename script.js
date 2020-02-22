@@ -99,7 +99,7 @@ function generate(data) {
         return (item1.days - item2.days)
     });
     console.log(data2)
-    data3 = $(`<table style="width:100%">
+    data3 = $(`<table class='table' style="width:100%">
     <tr>
       <th>Name</th>
       <th>Days left</th>
@@ -117,7 +117,7 @@ function generate(data) {
 
     }
 
-    data3.append($(`<button id='back' class='btn btn-primary'>Go back</button>`))
+    data3.append($(`<button id='back' class='btn btn-info'>Go back</button>`))
     let content = $(`<div id='data'> </div>`).append(data3);
     $('body').empty().append(content);
 }
@@ -153,14 +153,15 @@ function main() {
               <input id='opened' type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Already Opened</label>
             </div>
-            <button id='add' class="btn btn-primary">Add</button>
-            <button id='todata' class="btn btn-primary">See Expiration Dates</button>
-            <button id='scanbtn' class="btn btn-primary">Scan/Stop</button>
+            <button id='add' class="btn btn-info">Add</button>
+            <button id='todata' class="btn btn-info">See Expiration Dates</button>
+            <button id='scanbtn' class="btn btn-info">Scan/Stop</button>
             <div id="scanner-container"></div>
         </form>
     
-        <img src="https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?cs=srgb&dl=top-view-photo-of-food-dessert-1099680.jpg&fm=jpg">
-        <iframe src="https://www.barcodelookup.com/"></iframe>
+        <img id="coverphoto" src="https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?cs=srgb&dl=top-view-photo-of-food-dessert-1099680.jpg&fm=jpg"> 
+
+    
     
         <div id='bc'></div>
     </div>`))

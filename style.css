@@ -1,0 +1,56 @@
+#main{
+    display:block;
+    padding:20px;
+    width:40%;
+    margin-top:10px;
+    margin-left:10px;
+   
+}
+#main h1{
+    text-align: center;
+}
+#main p{
+    margin-left:120px;
+}
+form{
+    margin-left:120px;
+}
+img{
+    position:absolute;
+    left:50%;
+    top:0px;
+    height:100%;
+    z-index:0;
+}
+
+#data{
+    display:block;
+    padding:20px;
+    width:60%;
+    margin:auto;   
+}
+
+
+canvas.drawing, canvas.drawingBuffer {
+    position:absolute;
+    left: 120px;
+    top: 450px;
+}
+.btn{
+    margin-bottom:10px;
+}
+iframe{
+    width:30%;
+    height:50%;
+    left:50%;
+    z-index:3;
+    top:25%;
+    position: absolute;
+}
+
+h4{
+    position:absolute;
+    margin-left: 140px;
+    bottom:20px;
+  
+}

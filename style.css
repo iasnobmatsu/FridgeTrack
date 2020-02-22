@@ -7,10 +7,27 @@
    
 }
 #main h1{
-    text-align: center;
+    font-size:70px;
+    margin-left: 120px;
+    color: #FBCA1B;
+    font-weight: bold;
+   font-family: 'Raleway';
+}
+#main h2{
+    font-size:20px;
+    color: #FBCA1B;
+    font-weight: bold;
+    font-family: 'Raleway';
+}
+#main h3{
+    font-size:15px;
+    color: #F1E7B0;
+    font-family: 'Raleway';
 }
 #main p{
     margin-left:120px;
+    color: #F1E7B0;
+    font-family: 'Raleway';
 }
 form{
     margin-left:120px;

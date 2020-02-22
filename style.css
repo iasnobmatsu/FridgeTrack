@@ -15,12 +15,14 @@
 form{
     margin-left:120px;
 }
-img{
+
+#coverphoto{
     position:absolute;
     left:50%;
     top:0px;
     height:100%;
     z-index:0;
+    width: 50%;
 }
 
 #data{
@@ -44,7 +46,7 @@ iframe{
     height:50%;
     left:50%;
     z-index:3;
-    top:25%;
+    top:30%;
     position: absolute;
 }
 
@@ -53,4 +55,24 @@ h4{
     margin-left: 140px;
     bottom:20px;
   
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #685A52;
+    color: white;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 1em;
+    padding-top: 10px;
+    padding-bottom: 1px;
+    font-family: 'Montserrat', sans-serif;
+}
+footer p i{
+    padding-left: 10px;
 }

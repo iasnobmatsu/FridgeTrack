@@ -14,5 +14,14 @@
     "nodemailer": "^6.4.2",
     "push.js": "^1.0.12",
     "quagga": "^0.12.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iasnobmatsu/fridge-track.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iasnobmatsu/fridge-track/issues"
+  },
+  "homepage": "https://github.com/iasnobmatsu/fridge-track#readme"
 }

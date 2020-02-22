@@ -155,10 +155,14 @@ function main() {
             </div>
             <button id='add' class="btn btn-primary">Add</button>
             <button id='todata' class="btn btn-primary">See Expiration Dates</button>
+            <button id='scanbtn' class="btn btn-primary">Scan/Stop</button>
+            <div id="scanner-container"></div>
         </form>
     
         <img src="https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?cs=srgb&dl=top-view-photo-of-food-dessert-1099680.jpg&fm=jpg">
+        <iframe src="https://www.barcodelookup.com/"></iframe>
     
+        <div id='bc'></div>
     </div>`))
 }
 
@@ -301,7 +305,7 @@ function startScanner() {
         // console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
         bdata.push(result.codeResult.code);
          let bcode=result.codeResult.code;
-        if (bdata.length>10){
+        if (bdata.length>15){
             bcode=mode(bdata);
             Quagga.stop();
             _scannerIsRunning=false;

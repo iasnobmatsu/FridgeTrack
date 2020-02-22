@@ -132,3 +132,9 @@ footer p i{
 footer p{
 margin-bottom:5px;
 }
+
+
+button.btn{
+    background-color: #99badd;
+    border: 2px solid white;
+}

@@ -19,8 +19,8 @@ let data = [{
         "opened": "false"
     }
 ]
-let bdata=[];
-let barcodes=[];
+let bdata = [];
+let barcodes = [];
 let alertcount = 0;
 let intv;
 
@@ -134,7 +134,95 @@ $('body').on('click', '#back', (e) => {
 
 function main() {
     $('body').empty().append($(
-        `    <div id="main">
+
+
+
+        `
+        <nav class="navbar navbar-expand-md navbar-dark">
+                <!-- brand icon -->
+                <img id="logo" src="logo.jpg" style="width: 40px;">
+                <h3><a class="navbar-brand" href="/">Frigi-Track</a></h3>
+    
+                <!-- Collapse toggle button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <!-- Collapsible Navigation Bar -->
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <!-- Navigation bar contents -->
+                    <ul class="navbar-nav">
+                        <!-- Whitespace & Separator -->
+                        <span class="navbar-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+    
+                        <!-- Navigation bar items -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Track</a> <!-- TODO -->
+                        </li>
+                        
+                        
+                        <!-- Whitespace & Separator -->
+                        <span class="navbar-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                        
+                        <!-- Navigation bar items -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Foodlist</a> <!-- TODO -->
+                        </li>
+                        
+                        
+                        <!-- Whitespace & Separator -->
+                        <span class="navbar-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                        
+                                            <!-- Navigation bar items -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Nutrition Menu</a> <!-- TODO -->
+                        </li>
+                        
+                        
+                        <!-- Whitespace & Separator -->
+                        <span class="navbar-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+    
+                        <!-- Navigation bar dropdown menu -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                My Fridge
+                            </a>
+                            <!-- Dropdown menu items -->
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item">Fridge 1</a> <!-- TODO --> <!-- My food list -->
+                                <a class="dropdown-item">Fridge 2</a> <!-- TODO --><!-- Settings -->
+                                <a class="dropdown-item">Fridge 3</a> <!-- TODO --><!-- Log out -->
+                            </div>
+                        </li>
+                        
+                        <!-- Not Login content -->
+                        <!-- Whitespace & Separator -->
+                            <span class="navbar-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </span>
+                        
+                          <div class="search-container">
+                              <form action="/action_page.php">
+                                  <input type="text" placeholder="Search your food" name="search">
+                                  <button type="submit"><i class="fa fa-search"></i></button>
+                              </form>
+                            </div>
+                        
+                    </ul>
+                </div>
+            </nav>
+    
+       
+        
+        <div id="main">
         <h1>Frigi-Track</h1>
         <p>Store expiration date of your food and have notifications sent to you.</p>
     
@@ -164,7 +252,15 @@ function main() {
     
     
         <div id='bc'></div>
-    </div>`))
+
+        
+    </div>
+    
+    <footer>
+    <div class="container-fluid">
+        <p>Frigi-Track</p>
+    </div>
+</footer>`))
 }
 
 function cam() {
@@ -305,29 +401,31 @@ function startScanner() {
     Quagga.onDetected(function (result) {
         // console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
         bdata.push(result.codeResult.code);
-         let bcode=result.codeResult.code;
-        if (bdata.length>15){
-            bcode=mode(bdata);
+        let bcode = result.codeResult.code;
+        if (bdata.length > 15) {
+            bcode = mode(bdata);
             Quagga.stop();
-            _scannerIsRunning=false;
-            bdata=[];
+            _scannerIsRunning = false;
+            bdata = [];
             console.log(bcode);
-            barcodes.push({"barcode":bcode});
-            $("#bc").empty().append("<h4> barcode: "+bcode+"</h4>");
+            barcodes.push({
+                "barcode": bcode
+            });
+            $("#bc").empty().append("<h4> barcode: " + bcode + "</h4>");
         }
-       
-        
-       
+
+
+
 
     });
 }
 
 // /0050428430989
 
-function mode(arr){
-    return arr.sort((a,b) =>
-          arr.filter(v => v===a).length
-        - arr.filter(v => v===b).length
+function mode(arr) {
+    return arr.sort((a, b) =>
+        arr.filter(v => v === a).length -
+        arr.filter(v => v === b).length
     ).pop();
 }
 
@@ -335,15 +433,20 @@ function mode(arr){
 
 
 // Start/stop scanner
-document.getElementById("scanbtn").addEventListener("click", function (e) {
-    e.preventDefault()
+$("body").on("click", "#scanbtn", function (e) {
+    e.preventDefault();
+
     if (_scannerIsRunning) {
+        // console.log('close');
         Quagga.stop();
-        _scannerIsRunning=false;
+        _scannerIsRunning = false;
     } else {
         $('#main').append('<iframe src="https://www.barcodelookup.com/"></iframe>');
         startScanner();
     }
-}, false);
+
+    console.log('close');
+    console.log(_scannerIsRunning);
+});
 
 //https://ourcodeworld.com/articles/read/460/how-to-create-a-live-barcode-scanner-using-the-webcam-in-javascript

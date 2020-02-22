@@ -135,18 +135,18 @@ $('body').on('click', '#back', (e) => {
 function main() {
     $('body').empty().append($(
         `    <div id="main">
-        <h1>Expiration Check</h1>
+        <h1>Frigi-Track</h1>
         <p>Store expiration date of your food and have notifications sent to you.</p>
     
        
         <form>
             <div class="form-group">
-              <label for="name">Food Name</label>
+              <label for="name"><h2>Food Name</h2></label>
               <input class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Food">
-              <small id="emailHelp" class="form-text text-muted">Input name of your food item</small>
+              <small id="emailHelp" class="form-text text-muted"><h3>Input name of your food</h3> item</small>
             </div>
             <div class="form-group">
-              <label for="datein">Expiration Date</label>
+              <label for="datein"><h2>Expiration Date</h2></label>
               <input type="date" class="form-control" id="datein" placeholder="">
             </div>
             <div class="form-check">
@@ -159,7 +159,7 @@ function main() {
             <div id="scanner-container"></div>
         </form>
     
-        <img id="coverphoto" src="https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?cs=srgb&dl=top-view-photo-of-food-dessert-1099680.jpg&fm=jpg"> 
+        <img id="coverphoto" src="coverphoto.jpg">  
 
     
     

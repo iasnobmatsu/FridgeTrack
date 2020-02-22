@@ -30,6 +30,34 @@
     font-family: 'Raleway';
 }
 
+.navbar{
+    background-color: #99badd;
+    z-index: 10;
+}
+
+
+.navbar .search-container {
+  float: right;
+}
+
+.navbar input[type=text] {
+  padding: 6px;
+  margin-top: 5px;
+  font-size: 15px;
+  border: none;
+}
+
+.navbar .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 5px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
 .form-check-label{
     color:#FBCA1B;
     font-family: 'Raleway';
@@ -83,8 +111,8 @@ footer{
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #F6EEC7;
-    color: black;
+    background-color: #99badd;
+    color: white;
     z-index: 10;
     display: flex;
     justify-content: center;

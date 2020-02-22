@@ -1,11 +1,11 @@
 let data = [{
         "name": "apple",
-        "expire": "2020-02-23",
+        "expire": "2020-02-24",
         "opened": "false"
     },
     {
         "name": "banana",
-        "expire": "2020-02-22",
+        "expire": "2020-02-25",
         "opened": "false"
     },
     {
@@ -35,9 +35,9 @@ function check() {
         today = new Date();
         edate = parseDate(item.expire);
         //https://stackoverflow.com/questions/2627473/how-to-calculate-the-number-of-days-between-two-dates
-        let oneday = oneDay = 24 * 60 * 60 * 1000;
-        diffDays = Math.round(Math.abs((edate - today) / oneDay));
-        item['days'] = diffDays;
+        let day =1000*60*6*24;
+        daysToExp = Math.floor((edate - today) / day)+1;
+        item['days'] = daysToExp;
         return item;
     })
 
@@ -87,14 +87,14 @@ function generate(data) {
     data2 = data.map((item) => {
         today = new Date();
         edate = parseDate(item.expire);
-        //https://stackoverflow.com/questions/2627473/how-to-calculate-the-number-of-days-between-two-dates
+        //ref https://stackoverflow.com/questions/2627473/how-to-calculate-the-number-of-days-between-two-dates
         let oneday = oneDay = 24 * 60 * 60 * 1000;
-        diffDays = Math.round(Math.abs((edate - today) / oneDay));
+        diffDays = Math.floor((edate - today) / oneDay)+1;
         item['days'] = diffDays;
         return item;
     })
 
-
+    data2=data2.filter(item=>item.days>0);
     data2 = data2.sort((item1, item2) => {
         return (item1.days - item2.days)
     });
@@ -231,8 +231,7 @@ function main() {
             <div class="form-group">
               <label for="name"><h2>Food Name</h2></label>
               <input class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Food">
-              <small id="emailHelp" class="form-text text-muted"><h3>Input name of your food</h3> item</small>
-            </div>
+               </div>
             <div class="form-group">
               <label for="datein"><h2>Expiration Date</h2></label>
               <input type="date" class="form-control" id="datein" placeholder="">
@@ -263,55 +262,19 @@ function main() {
 </footer>`))
 }
 
-function cam() {
-    Quagga.init({
-        inputStream: {
-            name: "Live",
-            type: "LiveStream",
-            // Or '#yourElement' (optional)
-            target: document.querySelector('#yourElement')
-        },
-        decoder: {
-            readers: ["code_128_reader"]
-        }
-    }, function (err) {
-        if (err) {
-            console.log(err);
-            return
-        }
-        console.log("Initialization finished. Ready to start");
-        Quagga.start();
-    });
 
-    Quagga.decodeSingle({
-        decoder: {
-            readers: ["code_128_reader"] // List of active readers
-        },
-        locate: true, // try to locate the barcode in the image
-        // You can set the path to the image in your server
-        // or using it's base64 data URI representation data:image/jpg;base64, + data
-        src: '/barcode_image.jpg'
-    }, function (result) {
-        if (result.codeResult) {
-            console.log("result", result.codeResult.code);
-        } else {
-            console.log("not detected");
-        }
-    });
-}
 
-var _scannerIsRunning = false;
+let _scannerIsRunning = false;
 
-function startScanner() {
+async function startScanner() {
     Quagga.init({
         inputStream: {
             name: "Live",
             type: "LiveStream",
             target: document.querySelector('#scanner-container'),
             constraints: {
-                width: 480,
-                height: 320,
-                facingMode: "environment"
+                width: 400,
+                height: 300,
             },
         },
         decoder: {
@@ -326,75 +289,16 @@ function startScanner() {
                 "upc_e_reader",
                 "i2of5_reader"
             ],
-            debug: {
-                showCanvas: true,
-                showPatches: true,
-                showFoundPatches: true,
-                showSkeleton: true,
-                showLabels: true,
-                showPatchLabels: true,
-                showRemainingPatchLabels: true,
-                boxFromPatches: {
-                    showTransformed: true,
-                    showTransformedBox: true,
-                    showBB: true
-                }
-            }
         },
 
     }, function (err) {
         if (err) {
             console.log(err);
-            return
+            return;
         }
-
-        console.log("Initialization finished. Ready to start");
         Quagga.start();
-
         // Set flag to is running
         _scannerIsRunning = true;
-    });
-
-    Quagga.onProcessed(function (result) {
-        var drawingCtx = Quagga.canvas.ctx.overlay,
-            drawingCanvas = Quagga.canvas.dom.overlay;
-
-        if (result) {
-            if (result.boxes) {
-                drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
-                result.boxes.filter(function (box) {
-                    return box !== result.box;
-                }).forEach(function (box) {
-                    Quagga.ImageDebug.drawPath(box, {
-                        x: 0,
-                        y: 1
-                    }, drawingCtx, {
-                        color: "green",
-                        lineWidth: 2
-                    });
-                });
-            }
-
-            if (result.box) {
-                Quagga.ImageDebug.drawPath(result.box, {
-                    x: 0,
-                    y: 1
-                }, drawingCtx, {
-                    color: "#00F",
-                    lineWidth: 2
-                });
-            }
-
-            if (result.codeResult && result.codeResult.code) {
-                Quagga.ImageDebug.drawPath(result.line, {
-                    x: 'x',
-                    y: 'y'
-                }, drawingCtx, {
-                    color: 'red',
-                    lineWidth: 3
-                });
-            }
-        }
     });
 
 
@@ -420,8 +324,8 @@ function startScanner() {
     });
 }
 
-// /0050428430989
 
+//ref https://stackoverflow.com/questions/1053843/get-the-element-with-the-highest-occurrence-in-an-array
 function mode(arr) {
     return arr.sort((a, b) =>
         arr.filter(v => v === a).length -
@@ -433,16 +337,20 @@ function mode(arr) {
 
 
 // Start/stop scanner
-$("body").on("click", "#scanbtn", function (e) {
+$("body").on("click", "#scanbtn", async (e)=>{
     e.preventDefault();
 
     if (_scannerIsRunning) {
         // console.log('close');
-        Quagga.stop();
+        await Quagga.stop();
         _scannerIsRunning = false;
     } else {
-        $('#main').append('<iframe src="https://www.barcodelookup.com/"></iframe>');
-        startScanner();
+
+        if ($('iframe')!=null){
+            $('#main').append('<iframe src="https://www.barcodelookup.com/"></iframe>');
+        }
+       
+        await startScanner();
     }
 
     console.log('close');

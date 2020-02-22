@@ -9,26 +9,32 @@
 #main h1{
     font-size:350%;
     margin-left: 25%;
-    color: #FBCA1B;
+    color: #6A961F;
     font-weight: bold;
    font-family: 'Raleway';
 }
 #main h2{
     font-size:20px;
-    color: #FBCA1B;
+    color: darkorange;
     font-weight: bold;
     font-family: 'Raleway';
 }
 #main h3{
     font-size:15px;
-    color: #F1E7B0;
+    color: #FBCA1B;
     font-family: 'Raleway';
 }
 #main p{
     margin-left: 25%;
-    color: #F1E7B0;
+    color: #92B473;
     font-family: 'Raleway';
 }
+
+.form-check-label{
+    color:#FBCA1B;
+    font-family: 'Raleway';
+}
+
 form{
     margin-left:120px;
 }

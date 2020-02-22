@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Frigi-Track</title>
     
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="  https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-  
+    
    
 </head>
 <body>
 
 
     <div id="main">
-    <h1>Expiration Check</h1>
+    <h1>Frigi-Track</h1>
     <p>Store expiration date of your food and have notifications sent to you.</p>
 
    
     <form>
+        <div class="col-6">
         <div class="form-group">
           <label for="name">Food Name</label>
           <input class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Food">
@@ -36,14 +37,16 @@
         <button id='todata' class="btn btn-primary">See Expiration Dates</button>
         <button id='scanbtn' class="btn btn-primary">Scan/Stop</button>
         <div id="scanner-container"></div>
+        </div>
     </form>
 
     <!-- <iframe src="https://www.barcodelookup.com/"></iframe> -->
 
     
     <img src="https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?cs=srgb&dl=top-view-photo-of-food-dessert-1099680.jpg&fm=jpg">
+        
     <iframe src="https://www.barcodelookup.com/"></iframe>
-
+        
     <div id='bc'></div>
 </div>
     

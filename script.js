@@ -26,28 +26,33 @@ let intv;
 
 $(document).ready(() => {
     //  intv=setInterval(check, 3000);
+    console.log('ready');
     check();
 
 });
 
 function check() {
+    console.log('start checking')
     data2 = data.map((item) => {
         today = new Date();
         edate = parseDate(item.expire);
         //https://stackoverflow.com/questions/2627473/how-to-calculate-the-number-of-days-between-two-dates
-        let day =1000*60*6*24;
-        daysToExp = Math.floor((edate - today) / day)+1;
-        item['days'] = daysToExp;
+        let oneday = oneDay = 24 * 60 * 60 * 1000;
+        diffDays = Math.floor((edate - today) / oneDay)+1;
+        item['days'] = diffDays;
         return item;
     })
 
-    if (data2.filter(item => item.days <= 3).length > 0) {
+    console.log(data2);
+    if (data2.filter(item => (item.days <= 3)).length > 0) {
         names = []
         exp = data2.filter(item => item.days <= 3);
+        console.log(exp);
         for (let i = 0; i < exp.length; i++) {
             names.push(data2[i].name);
         }
         Push.create("Your item " + names + " will expire under 3 days.")
+        console.log('check')
         // alertcount++;
     }
     // if (alertcount>0){

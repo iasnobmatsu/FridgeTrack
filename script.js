@@ -368,7 +368,7 @@ async function startScanner() {
             type: "LiveStream",
             target: document.querySelector('#scanner-container'),
             constraints: {
-                width: 400,
+                width: 450,
                 height: 300,
             },
         },

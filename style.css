@@ -109,7 +109,7 @@ iframe{
     /* position:absolute; */
     /* margin-left: 150px; */
     /* bottom:10px; */
-    color:white;
+    color:#92B473;
   
 }
 
@@ -146,9 +146,9 @@ button.btn{
 }
 
 #scanner-container{
-    border: 5px solid #99badd;
-    min-width:410px;
-    min-height:310px;
+    /* border: 5px solid #99badd; */
+    width:450px;
+    min-height:300px;
     background-color: black;
     border-radius: 10px;
 }
